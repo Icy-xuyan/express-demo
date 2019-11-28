@@ -54,7 +54,7 @@ app.get("/delete", (req, res) => {
   let id = req.query.id;
   db.readFile(data => {
     data.list = data.list.filter(item => item.id !== +id);
-    db.writeFile(data, function() {
+    db.writeFile(data, () => {
       res.redirect("/");
     });
   });
@@ -68,7 +68,7 @@ app.post("/fb", (req, res) => {
       id: +new Date(),
       time: moment().format("YYYY-MM-DD HH:mm:ss")
     });
-    db.writeFile(data, function() {
+    db.writeFile(data, () => {
       res.redirect("/");
     });
   });
